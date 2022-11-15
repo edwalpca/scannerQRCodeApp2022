@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tsw_scanner_app/pages/direcciones_content_page.dart';
 import 'package:tsw_scanner_app/pages/mapas_content_page.dart';
+import 'package:tsw_scanner_app/providers/db_provider.dart';
 import 'package:tsw_scanner_app/providers/ui_provider.dart';
 import 'package:tsw_scanner_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:tsw_scanner_app/widgets/custom_floating_action_button.dart';
@@ -32,6 +33,23 @@ class _ContentPage extends StatelessWidget {
     final uiProviderIndex = Provider.of<UiProvider>(context).selectedMenuOpt;
     final int currentIndexSelected = uiProviderIndex;
 
+    // TODO: Temporal leer la base de datos
+    //Estoy llamando la base de datos
+    //DBProvider.db.database;
+
+    //
+    //Ejemplo de Insertar en la base de datos.
+    final now = DateTime.now();
+    DateTime date = DateTime(
+        now.year, now.month, now.day, now.hour, now.minute, now.second);
+    final tempScan =
+        ScanModel(valor: 'http://mauricioalpizar.com', fecha: date.toString());
+    //DBProvider.db.nuevoScan(tempScan);
+
+    // Obtiene un reistro partilcar de la base de datos.
+    //DBProvider.db.getScanById(10).then((scan) => print(scan!.valor.toString()));
+    DBProvider.db.getRowporValor('mau').then((scan) => print(scan));
+
     switch (currentIndexSelected) {
       case 0:
         return const DireccionesContentPage();
@@ -45,7 +63,6 @@ class _ContentPage extends StatelessWidget {
 }
 
 class CustomActionsAppBar extends StatelessWidget {
-  
   const CustomActionsAppBar({super.key});
 
   @override
@@ -69,13 +86,16 @@ class CustomActionsAppBar extends StatelessWidget {
 //Widget que muestra en el AppBar el icono de la acccion seleccionada
 // segun el BottomNavigation Bar
 class IconoActivo extends StatelessWidget {
-
   final IconData childIcon;
   const IconoActivo({super.key, required this.childIcon});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(right: 10), child: Icon(childIcon,size: 32,));
+        margin: const EdgeInsets.only(right: 10),
+        child: Icon(
+          childIcon,
+          size: 32,
+        ));
   }
 }
