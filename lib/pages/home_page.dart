@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tsw_scanner_app/constantes.dart';
 import 'package:tsw_scanner_app/pages/direcciones_content_page.dart';
 import 'package:tsw_scanner_app/pages/mapas_content_page.dart';
 import 'package:tsw_scanner_app/providers/db_provider.dart';
+import 'package:tsw_scanner_app/providers/scan_list_provider.dart';
 import 'package:tsw_scanner_app/providers/ui_provider.dart';
 import 'package:tsw_scanner_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:tsw_scanner_app/widgets/custom_floating_action_button.dart';
@@ -37,26 +39,33 @@ class _ContentPage extends StatelessWidget {
     //Estoy llamando la base de datos
     //DBProvider.db.database;
 
+    // Coloco el listen en False porque aqui no se tienen que redibujar
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
+
     //
     //Ejemplo de Insertar en la base de datos.
-    final now = DateTime.now();
-    DateTime date = DateTime(
-        now.year, now.month, now.day, now.hour, now.minute, now.second);
-    final tempScan =
-        ScanModel(valor: 'http://mauricioalpizar.com', fecha: date.toString());
+    //final now = DateTime.now();
+    //DateTime date = DateTime(
+      //  now.year, now.month, now.day, now.hour, now.minute, now.second);
+    // final tempScan =
+    //     ScanModel(valor: 'http://mauricioalpizar.com', fecha: dateGlobalSystem.toString());
     //DBProvider.db.nuevoScan(tempScan);
 
     // Obtiene un reistro partilcar de la base de datos.
     //DBProvider.db.getScanById(10).then((scan) => print(scan!.valor.toString()));
-    DBProvider.db.getRowporValor('mau').then((scan) => print(scan));
+    //DBProvider.db.getRowporValor('mau').then((scan) => print(scan));
 
     switch (currentIndexSelected) {
       case 0:
+        scanListProvider.cargarScanPorTipo('http');
         return const DireccionesContentPage();
       case 1:
+        scanListProvider.cargarScanPorTipo('geo');
         return const MapasContentPage();
       //Contenido por defecto cuando carga la pantalla
       default:
+        scanListProvider.cargarScanPorTipo('geo');
         return const DireccionesContentPage();
     }
   }

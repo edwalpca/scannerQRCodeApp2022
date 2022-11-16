@@ -92,15 +92,13 @@ class DBProvider {
 
   //
   //Obtiene TODOS los registros de la tabla
-  Future<List<ScanModel>?> getAllRows(int id) async {
+  Future<List<ScanModel>?> getAllRows() async {
     //
     //
     //
     final db = await database;
     final res = await db.query('Scans');
-    return res.isNotEmpty
-        ? res.map((s) => ScanModel.fromJson(s)).toList()
-        : [];
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
     //
     //
   }
@@ -113,9 +111,7 @@ class DBProvider {
     final res = await db.rawQuery('''
           SELECT * FROM Scans WHERE tipo = '$tipo' 
         ''');
-    return res.isNotEmpty
-        ? res.map((s) => ScanModel.fromJson(s)).toList()
-        : [];
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
     //
     //
   }
@@ -130,9 +126,43 @@ class DBProvider {
           SELECT * FROM Scans WHERE valor LIKE '%$valor%'
     
     ''');
-    return res.isNotEmpty
-        ? res.map((s) => ScanModel.fromJson(s)).toList()
-        : [];
+    return res.isNotEmpty ? res.map((s) => ScanModel.fromJson(s)).toList() : [];
+    //
+    //
+  }
+
+  //Actualiza un registro en Particular.
+  Future<int> updateScan(ScanModel nuevoScan) async {
+    //
+    //
+    final db = await database;
+    final res = await db.update('Scans', nuevoScan.toJson(),
+        where: 'id=?', whereArgs: [nuevoScan.id]);
+    return res;
+    //
+    //
+  }
+
+  //Borrar un registro en Particular.
+  Future<int> deleteScan(int id) async {
+    //
+    //
+    final db = await database;
+    final res = await db.delete('Scans', where: 'id = ?', whereArgs: [id]);
+    return res;
+    //
+    //
+  }
+
+  //Borrar un registro en Particular.
+  Future<int> deleteAllScan() async {
+    //
+    //
+    final db = await database;
+    final res = await db.rawDelete('''
+      DELETE FROM Scans
+    ''');
+    return res;
     //
     //
   }
