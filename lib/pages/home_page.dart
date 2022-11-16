@@ -47,7 +47,7 @@ class _ContentPage extends StatelessWidget {
     //Ejemplo de Insertar en la base de datos.
     //final now = DateTime.now();
     //DateTime date = DateTime(
-      //  now.year, now.month, now.day, now.hour, now.minute, now.second);
+    //  now.year, now.month, now.day, now.hour, now.minute, now.second);
     // final tempScan =
     //     ScanModel(valor: 'http://mauricioalpizar.com', fecha: dateGlobalSystem.toString());
     //DBProvider.db.nuevoScan(tempScan);
@@ -58,15 +58,17 @@ class _ContentPage extends StatelessWidget {
 
     switch (currentIndexSelected) {
       case 0:
-        scanListProvider.cargarScanPorTipo('http');
-        return const DireccionesContentPage();
-      case 1:
         scanListProvider.cargarScanPorTipo('geo');
         return const MapasContentPage();
+
+      case 1:
+        scanListProvider.cargarScanPorTipo('http');
+        return const DireccionesContentPage();
+
       //Contenido por defecto cuando carga la pantalla
       default:
         scanListProvider.cargarScanPorTipo('geo');
-        return const DireccionesContentPage();
+        return const MapasContentPage();
     }
   }
 }
@@ -84,10 +86,10 @@ class CustomActionsAppBar extends StatelessWidget {
       case 0:
         return const IconoActivo(childIcon: Icons.map_sharp);
       case 1:
-        return const IconoActivo(childIcon: Icons.scanner_outlined);
+        return const IconoActivo(childIcon: Icons.http_outlined);
       //Contenido por defecto cuando carga la pantalla
       default:
-        return const IconoActivo(childIcon: Icons.scanner_outlined);
+        return const IconoActivo(childIcon: Icons.http_outlined);
     }
   }
 }
@@ -100,11 +102,38 @@ class IconoActivo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.only(right: 10),
-        child: Icon(
-          childIcon,
-          size: 32,
-        ));
+
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: true);
+
+    return Row(
+      children: [
+        Container(
+            margin: const EdgeInsets.only(right: 10),
+            child: Icon(
+              childIcon,
+              size: 32,
+            )),
+        Container(
+            margin: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+
+
+                print(scanListProvider.tipoSeleccionado.toString());
+
+
+                scanListProvider.borrarScanPorTipo(
+                                        scanListProvider.tipoSeleccionado.toString());
+
+              },
+
+              child: const Icon(
+                Icons.delete,
+                size: 32,
+              ),
+            )),
+      ],
+    );
   }
 }

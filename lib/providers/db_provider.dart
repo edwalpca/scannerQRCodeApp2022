@@ -166,4 +166,19 @@ class DBProvider {
     //
     //
   }
+
+  //Borrar un registro en Particular.
+  Future<int> deleteScanPorTipo(String tipo) async {
+    //
+    //
+    final db = await database;
+    final res = await db.rawDelete('''
+      DELETE FROM Scans WHERE tipo = '$tipo'
+    ''');
+    return res;
+    //
+    //
+  }
+
+
 }

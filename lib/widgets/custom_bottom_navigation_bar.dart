@@ -16,7 +16,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       currentIndex: currentItemSelected,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapas'),
-        BottomNavigationBarItem(icon: Icon(Icons.scanner), label: 'Scannear')
+        BottomNavigationBarItem(icon: Icon(Icons.http_outlined), label: 'Websites')
       ],
       onTap: (value) {
         //Este es el metodo Setter que tiene mi Provider
