@@ -22,11 +22,11 @@ class CustomfloatingActionButton extends StatelessWidget {
           //final barcodeScanRes = 'http://www.google.com';
 
           scanListProvider.nuevoScan(
-              'http://mauricio-alpizar.com', dateGlobalSystem.toString());
+              'http://www.mauricioalpizar.com', dateGlobalSystem.toString());
 
 
-          // scanListProvider.nuevoScan(
-          //     'geo://15.33,15.66', dateGlobalSystem.toString());              
+           scanListProvider.nuevoScan(
+               'geo://15.99,15.33', dateGlobalSystem.toString());              
 
           // print('Dieron Click en el FloatingActionButton ');
           // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(

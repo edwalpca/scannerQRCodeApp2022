@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tsw_scanner_app/constantes.dart';
 import 'package:tsw_scanner_app/pages/direcciones_content_page.dart';
 import 'package:tsw_scanner_app/pages/mapas_content_page.dart';
-import 'package:tsw_scanner_app/providers/db_provider.dart';
 import 'package:tsw_scanner_app/providers/scan_list_provider.dart';
 import 'package:tsw_scanner_app/providers/ui_provider.dart';
 import 'package:tsw_scanner_app/widgets/custom_bottom_navigation_bar.dart';

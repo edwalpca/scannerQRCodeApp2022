@@ -22,6 +22,7 @@ Contiene integrado el uso de un paquete de un tercero llamado flutter_barcode_sc
 
 ## Referencias de otros WebSite de Ayuda.
 - [Extraer el DB ] - (https://www.youtube.com/watch?v=_6p7BqjNANQ)
+- [Url Launcher] (https://pub.dev/packages/url_launcher)
 
 URL de la base de datos Local para Abrir en SQLite:
 C:\Users\Mauricio Alpizar\AppData\Local\Google\AndroidStudio2021.2\device-explorer\Pixel_4a_API_30_ADV [emulator-5554]\data\data\com.example.tsw_scanner_app\app_flutter
