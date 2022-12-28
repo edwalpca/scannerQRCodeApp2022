@@ -9,12 +9,21 @@ Future<void> launchUrlFunction(BuildContext context, ScanModel scan) async {
 
   if (scan.tipo == 'http') {
     //Abrir el Sitio Web
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
+    
+    // if (await canLaunchUrl(url)) {
+    //   await launchUrl(url);
+    // } else {
+    //   throw 'Could not launch $url';
+    // }
+    if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
+
   } else {
+
+    //Abro la pantalla del Mapa de Google.
     Navigator.pushNamed(context, 'mapa', arguments: scan);
   }
+
+
 }

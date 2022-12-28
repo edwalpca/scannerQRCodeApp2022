@@ -3,6 +3,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
 import 'package:tsw_scanner_app/constantes.dart';
 import 'package:tsw_scanner_app/providers/scan_list_provider.dart';
+import 'package:tsw_scanner_app/utils/utils.dart';
 
 class CustomfloatingActionButton extends StatelessWidget {
   //Constructor del Widget
@@ -18,15 +19,25 @@ class CustomfloatingActionButton extends StatelessWidget {
         elevation: 0,
         child: const Icon(Icons.scanner_rounded),
         onPressed: () async {
+          //const barcodeScanRes = 'http://www.google.com';
+          const barcodeScanRes = 'geo:10.005002, -84.140475';
           
-          //final barcodeScanRes = 'http://www.google.com';
+          //Coloco esta validacion porque esta relacionada a si el usuario
+          //Cancelo la operacion del scaneo
+          if (barcodeScanRes == '-1') {
+            return;
+          }
 
-          scanListProvider.nuevoScan(
-              'http://www.mauricioalpizar.com', dateGlobalSystem.toString());
+          // scanListProvider.nuevoScan(
+          //     'http://www.mauricioalpizar.com', dateGlobalSystem.toString());
+          //  scanListProvider.nuevoScan(
+          //      'geo://10.005002, -84.140475', dateGlobalSystem.toString());
 
+          final nuevoScan = await scanListProvider.nuevoScan(
+              barcodeScanRes, dateGlobalSystem.toString());
 
-           scanListProvider.nuevoScan(
-               'geo://15.99,15.33', dateGlobalSystem.toString());              
+          // ignore: use_build_context_synchronously
+          launchUrlFunction(context, nuevoScan);
 
           // print('Dieron Click en el FloatingActionButton ');
           // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(

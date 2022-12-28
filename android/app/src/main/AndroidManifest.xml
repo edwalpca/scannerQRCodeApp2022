@@ -1,9 +1,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tsw_scanner_app">
+    <!--    Para evitar error cuando abra el Navegador y salga 
+            ERR_CLEARTEXT_NOT_PERMITTED
+            se adiciona la propiedad:
+            android:usesCleartextTraffic="true"    
+    -->
    <application
+
+        android:usesCleartextTraffic="true"    
         android:label="tsw_scanner_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+    <meta-data android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyDyPU8oLRb1wOK1dJ7Rc2YBDVrrAEb5uB8"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
