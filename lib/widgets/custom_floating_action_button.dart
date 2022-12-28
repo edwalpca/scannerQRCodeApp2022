@@ -20,7 +20,7 @@ class CustomfloatingActionButton extends StatelessWidget {
         child: const Icon(Icons.scanner_rounded),
         onPressed: () async {
           //const barcodeScanRes = 'http://www.google.com';
-          const barcodeScanRes = 'geo:10.005002, -84.140475';
+          const barcodeScanRes = 'geo:10.005002,-84.140475';
           
           //Coloco esta validacion porque esta relacionada a si el usuario
           //Cancelo la operacion del scaneo

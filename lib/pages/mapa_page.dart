@@ -35,25 +35,29 @@ class _MapaPageState extends State<MapaPage> {
     final ScanModel scan =
         ModalRoute.of(context)!.settings.arguments as ScanModel;
 
-    final cordenadas = scan.valor.split(',');
-    final lat = double.parse(cordenadas[0].replaceAll('geo:', ''));
-    final lgn = double.parse(cordenadas[1].replaceAll(' ', ''));
-    print("==============================================");
-    print(lat);
-    print("== ");
-    print(lgn);
-    print("==============================================");
+    //Codigo optimizado en el scanmodel.dart
+    //    final cordenadas = scan.valor.split(',');
+    //    final lat = double.parse(cordenadas[0].replaceAll('geo:', ''));
+    //    final lgn = double.parse(cordenadas[1].replaceAll(' ', ''));
+    //    print("==============================================");
+    //    print(lat);
+    //    print("== ");
+    //    print(lgn);
+    //    print("==============================================");
 
     final CameraPosition puntoInicial = CameraPosition(
-      target: LatLng(lat, lgn),
-      zoom: 14.4746,
+      //target: LatLng(lat, lgn),
+      target: scan.getLatLng(),
+      zoom: 17,
+      tilt: 50
     );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Coordenadas del Mapa')),
       //Construccion del Mapa en la Pantalla.
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        //mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: puntoInicial,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
