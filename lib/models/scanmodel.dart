@@ -1,9 +1,7 @@
 // To parse this JSON data, do
 //
 //     final scanModel = scanModelFromJson(jsonString);
-
 import 'dart:convert';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
 
 ScanModel scanModelFromJson(String str) => ScanModel.fromJson(json.decode(str));

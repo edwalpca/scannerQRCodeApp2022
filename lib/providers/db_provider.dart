@@ -34,7 +34,7 @@ class DBProvider {
     final path = join(documentsDirectory.path,
         'ScansDB.db'); //el Join nos permite crear el url donde esta muestra base de datos.
 
-    print(path);
+    //print(path);
 
     //creacion de nuestra base de datos.
     return await openDatabase(path, version: 1, onOpen: (db) {},
@@ -74,7 +74,7 @@ class DBProvider {
     //verificar la base de datos
     final db = await database;
     final res = await db.insert('Scans', nuevoScan.toJson());
-    print('Impresion de Resultado de DB: ${res}');
+    //print('Impresion de Resultado de DB: ${res}');
     return res;
   }
 

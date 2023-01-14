@@ -17,7 +17,9 @@ class MapaPage extends StatefulWidget {
 
 class _MapaPageState extends State<MapaPage> {
   //Controlador de Google Maps
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
+
+  MapType mapType = MapType.normal;
 
   @override
   Widget build(BuildContext context) {
@@ -46,27 +48,59 @@ class _MapaPageState extends State<MapaPage> {
     //    print("==============================================");
 
     final CameraPosition puntoInicial = CameraPosition(
-      //target: LatLng(lat, lgn),
-      target: scan.getLatLng(),
-      zoom: 17,
-      tilt: 50
-    );
+        //target: LatLng(lat, lgn),
+        target: scan.getLatLng(),
+        zoom: 14,
+        tilt: 50);
+    //Marcadores.
+    Set<Marker> markers = <Marker>{};
+
+    markers.add(Marker(
+      markerId: const MarkerId('geoLocation'),
+      position: scan.getLatLng(),
+    ));
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Coordenadas del Mapa')),
+      appBar: AppBar(
+        title: const Text('Coordenadas del Mapa'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                final GoogleMapController controller = await _controller.future;
+                controller.animateCamera(CameraUpdate.newCameraPosition(
+                  CameraPosition(target: scan.getLatLng(), zoom: 14, tilt: 50),
+                ));
+              },
+              icon: const Icon(Icons.location_searching))
+        ],
+      ),
       //Construccion del Mapa en la Pantalla.
       body: GoogleMap(
         //mapType: MapType.hybrid,
-        mapType: MapType.normal,
+        mapType: mapType,
+        markers: markers,
         initialCameraPosition: puntoInicial,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
+      //
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.layers),
+        onPressed: () {
+          setState(() {
+            if (mapType == MapType.normal) {
+              mapType = MapType.satellite;
+            } else {
+              mapType = MapType.normal;
+            }
+          });
+        },
+      ),
       //Botones de Abajo
-      bottomNavigationBar: const CustomBottomNavigationBar(),
-      floatingActionButton: const CustomfloatingActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      //bottomNavigationBar: const CustomBottomNavigationBar(),
+      //floatingActionButton: const CustomfloatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

@@ -6,6 +6,8 @@ import 'package:tsw_scanner_app/providers/scan_list_provider.dart';
 import 'package:tsw_scanner_app/providers/ui_provider.dart';
 
 void main() {
+
+
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => UiProvider()),

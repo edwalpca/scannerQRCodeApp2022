@@ -12,12 +12,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    //Voy a Obtener el valor de mi provider.
+    final uiProviderIndex = Provider.of<UiProvider>(context).selectedMenuOpt;
+    final int currentIndexSelected = uiProviderIndex;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Historial'),
+        //Cambio la opcion del titulo del Menu segun la opcion seleecionada.
+        // Mapas o URL's
+        title: (currentIndexSelected == 0 ) ? const Text('Historial Ubicaciones') : const Text('Historial URLs') ,
         actions: const <Widget>[CustomActionsAppBar()],
       ),
+      // El siguiente ContentPage muestra el contenido segun sea el caso para 
+      // los Mapas o bien para el contenido de las direcciones URLS.
       body: _ContentPage(),
       bottomNavigationBar: const CustomBottomNavigationBar(),
       floatingActionButton: const CustomfloatingActionButton(),
@@ -71,6 +81,8 @@ class _ContentPage extends StatelessWidget {
   }
 }
 
+// Widget para pintar y  Mostrar el icono del ubicaciones o Urls
+// segun la opcion seleccionada.
 class CustomActionsAppBar extends StatelessWidget {
   const CustomActionsAppBar({super.key});
 
@@ -92,9 +104,11 @@ class CustomActionsAppBar extends StatelessWidget {
   }
 }
 
+
 //Widget que muestra en el AppBar el icono de la acccion seleccionada
 // segun el BottomNavigation Bar
 class IconoActivo extends StatelessWidget {
+ 
   final IconData childIcon;
   const IconoActivo({super.key, required this.childIcon});
 
@@ -117,15 +131,11 @@ class IconoActivo extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
 
-
-                print(scanListProvider.tipoSeleccionado.toString());
-
-
+                //Borra el contenido segun el  tipo seleccionado siendo mapas o urls.
+                //print('borrando Contenido de :' + scanListProvider.tipoSeleccionado.toString());
                 scanListProvider.borrarScanPorTipo(
                                         scanListProvider.tipoSeleccionado.toString());
-
               },
-
               child: const Icon(
                 Icons.delete,
                 size: 32,

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tsw_scanner_app/providers/ui_provider.dart';
 
+// Widget que se encarga de  pintar las opcioones de la parte inferior
+// para que el usuario escoja Mapas o bien URLS segun el tipo de Scaneo realizado 
+// en el App.
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
 

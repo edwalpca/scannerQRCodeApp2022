@@ -19,9 +19,24 @@ class CustomfloatingActionButton extends StatelessWidget {
         elevation: 0,
         child: const Icon(Icons.scanner_rounded),
         onPressed: () async {
-          //const barcodeScanRes = 'http://www.google.com';
-          const barcodeScanRes = 'geo:10.005002,-84.140475';
+
+
+          // TODO: 
+          //Bloque de Codigo para activar el Scan en el dispositivo Fisco para lectura del codigo QR.
+          // Descomentar las siguientes DOS lineas.
+          // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          //     '#3D8BEF', 'Cancelar', false, ScanMode.QR);
+          // Fin del Bloque de codigo
+
+
+
+          // TODO: Segun lo que scanee la camara devuelve alguno de estos dos argumentos.
+          // para Efectos del Emulador se puede forzar segun sea el caso, 
+          // Comentar estas lineas para el disposibito en productivo.
+          //const barcodeScanRes = 'https://www.qrcode.es/es/home/';
+          const barcodeScanRes = 'geo:10.514281615835282, -84.93568329791171';
           
+
           //Coloco esta validacion porque esta relacionada a si el usuario
           //Cancelo la operacion del scaneo
           if (barcodeScanRes == '-1') {
