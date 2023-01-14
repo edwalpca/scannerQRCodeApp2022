@@ -1,6 +1,7 @@
 # Aplicacion de Codigo Scanner QR
 
 Proyecto desarrollado en Flutter como parte del curso de actualizacion profesional a titulo personal y actualizacion continua.
+El Proyecto quedo funcionando sobre Flutter 3.3.10
 
 ## Descripcion
 
