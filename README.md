@@ -36,9 +36,9 @@ Fecha de Creacion Fecha de creación 28 de diciembre de 2022, 17:04:11 GMT-6 - b
 
 ## ScreenShots del App
 
-![Lista Geo's](https://bitbucket.org/mauricio-flutter/scannerQRCodeApp2022/src/master/info_proyecto/screenshots/listaUbicaciones.png)
-![Lista URL's](https://bitbucket.org/mauricio-flutter/scannerQRCodeApp2022/src/master/info_proyecto/screenshots/listaUrls.png)
-![Mapa 1     ](https://bitbucket.org/mauricio-flutter/scannerQRCodeApp2022/src/master/info_proyecto/screenshots/mapa1.png)
-![Mapa 2     ](https://bitbucket.org/mauricio-flutter/scannerQRCodeApp2022/src/master/info_proyecto/screenshots/mapa2.png)
-![Mapa 3     ](https://bitbucket.org/mauricio-flutter/scannerQRCodeApp2022/src/master/info_proyecto/screenshots/mapa3.png)
+![Lista Geo's](https://github.com/edwalpca/scannerQRCodeApp2022/blob/main/info_proyecto/screenshots/listaUbicaciones.png)
+![Lista URL's](https://github.com/edwalpca/scannerQRCodeApp2022/blob/main/info_proyecto/screenshots/listaUrls.png)
+![Mapa 1     ](https://github.com/edwalpca/scannerQRCodeApp2022/blob/main/info_proyecto/screenshots/mapa1.png)
+![Mapa 2     ](https://github.com/edwalpca/scannerQRCodeApp2022/blob/main/info_proyecto/screenshots/mapa2.png)
+![Mapa 3     ](https://github.com/edwalpca/scannerQRCodeApp2022/blob/main/info_proyecto/screenshots/mapa3.png)
 
